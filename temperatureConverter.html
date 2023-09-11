@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: aqua;
+            text-align: center;
+            width: 50vw;
+            margin: 30vh auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 10px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .inner-div{
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 20px;
+            width: 50%;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class = "inner-div" id="celcius-div">
+            <p>Celcius</p><br>
+            <input type="number" value="0" id="celcius">
+        </div>
+        <div class = "inner-div" id="fahrenheit-div">
+            <p>Fahrenheit</p><br>
+            <input type="number" value="32" id="fahrenheit">
+        </div>
+    </div>
+    <script>
+        let celcius = document.getElementById("celcius");
+        let fahrenheit = document.getElementById("fahrenheit");
+        celcius.addEventListener('input', function(){
+            let c = this.value;
+            let f = ((9/5)*c) + 32;
+            if(!Number.isInteger(f))
+            {
+                f = f.toFixed(5);
+            }
+            fahrenheit.value = f;
+        });
+        fahrenheit.addEventListener('input', function(){
+            let f = this.value;
+            let c = (f-32)*(5/9);
+            if(!Number.isInteger(c))
+            {
+                c = c.toFixed(5);
+            }
+            celcius.value = c;
+        });
+    </script>
+</body>
+
+</html>
